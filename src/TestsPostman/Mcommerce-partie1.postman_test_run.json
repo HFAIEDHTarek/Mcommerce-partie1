@@ -1,0 +1,162 @@
+{
+	"id": "a9818fda-8a61-4944-8ecd-38bc91d5a9e0",
+	"name": "Mcommerce-partie1",
+	"allTests": [],
+	"timestamp": "2018-08-07T14:07:34.282Z",
+	"collection_id": "31e0564a-16bd-4d81-8c33-c746291b0771",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 1,
+	"collection": {
+		"id": "31e0564a-16bd-4d81-8c33-c746291b0771",
+		"name": "Mcommerce-partie1",
+		"description": "",
+		"auth": null,
+		"events": null,
+		"variables": [],
+		"order": [
+			"d9035e91-243c-4d28-b61c-29fe74a48d7c",
+			"fd12e0c3-9b80-403f-92f4-1b3290a16635",
+			"e72750e7-ddde-43c3-87b9-a51deb6f2a5a"
+		],
+		"folders_order": [],
+		"owner": "0",
+		"permissions": {},
+		"favorite": false,
+		"shared": false,
+		"type": "collection",
+		"depth": 0
+	},
+	"folder": null,
+	"environment": null,
+	"globals": null,
+	"results": [
+		{
+			"name": "http://localhost:2020/AdminProduits",
+			"id": "d9035e91-243c-4d28-b61c-29fe74a48d7c",
+			"url": "http://localhost:2020/AdminProduits",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {},
+			"times": [
+				"13"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "13",
+			"totalRequestTime": "13",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:2020/tri/Produits",
+			"id": "fd12e0c3-9b80-403f-92f4-1b3290a16635",
+			"url": "http://localhost:2020/tri/Produits",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {},
+			"times": [
+				"15"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "15",
+			"totalRequestTime": "15",
+			"iterationResults": {}
+		},
+		{
+			"name": "http://localhost:2020/Produits",
+			"id": "e72750e7-ddde-43c3-87b9-a51deb6f2a5a",
+			"url": "http://localhost:2020/Produits",
+			"totalTime": 0,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {},
+			"times": [
+				"43"
+			],
+			"allTests": [
+				{}
+			],
+			"time": "43",
+			"totalRequestTime": "43",
+			"iterationResults": {}
+		}
+	],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 71,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "http://localhost:2020/AdminProduits",
+			"id": "d9035e91-243c-4d28-b61c-29fe74a48d7c",
+			"url": "http://localhost:2020/AdminProduits",
+			"time": "2018-08-07T14:07:34.282Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:2020/tri/Produits",
+			"id": "fd12e0c3-9b80-403f-92f4-1b3290a16635",
+			"url": "http://localhost:2020/tri/Produits",
+			"time": "2018-08-07T14:07:34.282Z",
+			"responseCode": {
+				"code": 200,
+				"name": "OK",
+				"detail": {
+					"name": "OK",
+					"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+				}
+			},
+			"testPassFailCounts": {}
+		},
+		{
+			"name": "http://localhost:2020/Produits",
+			"id": "e72750e7-ddde-43c3-87b9-a51deb6f2a5a",
+			"url": "http://localhost:2020/Produits",
+			"time": "2018-08-07T14:07:34.282Z",
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request",
+				"detail": {
+					"name": "Bad Request",
+					"detail": "The request cannot be fulfilled due to bad syntax."
+				}
+			},
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}
