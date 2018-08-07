@@ -2,12 +2,15 @@ package com.ecommerce.microcommerce.web.controller;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.web.exceptions.ProduitGratuitException;
 import com.ecommerce.microcommerce.web.exceptions.ProduitIntrouvableException;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -27,7 +30,7 @@ public class ProductController {
     @Autowired
     private ProductDao productDao;
 
-
+    String S = "{Product";
     //Récupérer la liste des produits
 
     @RequestMapping(value = "/Produits", method = RequestMethod.GET)
@@ -73,6 +76,7 @@ public class ProductController {
 
         if (productAdded == null)
             return ResponseEntity.noContent().build();
+        if(productAdded.getPrix()== 0) throw new ProduitGratuitException("Le prix doit etre > 0.");
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -83,11 +87,6 @@ public class ProductController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping (value = "/Produits/{id}")
-    public void supprimerProduit(@PathVariable int id) {
-
-        productDao.delete(id);
-    }
 
     @PutMapping (value = "/Produits")
     public void updateProduit(@RequestBody Product product) {
@@ -97,11 +96,55 @@ public class ProductController {
 
 
     //Pour les tests
-    @GetMapping(value = "test/produits/{prix}")
+    @PutMapping(value = "test/produits/{prix}")
     public List<Product>  testeDeRequetes(@PathVariable int prix) {
 
         return productDao.chercherUnProduitCher(400);
     }
+
+    //Récupérer un produit par son Id
+    @ApiOperation(value = "calcule la marge de chaque produit (différence entre prix d‘achat et prix de vente)")
+    @RequestMapping(value = "/AdminProduits", method = RequestMethod.GET)
+    @ResponseBody
+    public String calculerMargeProduit() {
+        int diff =0;
+        String  arrAll = "{\n";
+
+       // response.put("",productDao.findAll());
+        for  (Product product: productDao.findAll()){
+            String s="\"Product";
+            diff = product.getPrix() - product.getPrixAchat();
+            JSONObject response = new JSONObject();
+            JSONObject response1 = new JSONObject();
+
+            response.put("prix",product.getPrix());
+            response.put("nom",product.getNom());
+            response.put("id",product.getId());
+
+
+
+            s+=response+"\""+":"+diff;
+
+
+            arrAll+=s+",\n";
+
+
+
+               }
+
+        return arrAll+"}";
+
+
+
+      //  return productDao.findAll();
+    }
+    @GetMapping(value = "tri/Produits")
+    public List<Product> triAplabetique(){
+        return productDao.trierProduitsParOrdreAlphabetique();
+    }
+
+
+
 
 
 
